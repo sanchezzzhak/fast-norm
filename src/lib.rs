@@ -36,10 +36,11 @@ fn core_denormalize(src: &[f32], dst: &mut [u8], size: usize, mean: &[f32], std_
     let g = (g_val * std_val[1] + mean[1]) * factor;
     let b = (b_val * std_val[2] + mean[2]) * factor;
 
-    //Clamp into 0..255 frames and round
-    pixel[0] = r.clamp(0.0, 255.0).round() as u8;
-    pixel[1] = g.clamp(0.0, 255.0).round() as u8;
-    pixel[2] = b.clamp(0.0, 255.0).round() as u8;
+    // Clamp into 0..255 frames and round (0.02% infelicity)
+    // r.clamp(0.0, 255.0).round() as u8
+    pixel[0] = (r.clamp(0.0, 255.0) + 0.5) as u8;
+    pixel[1] = (g.clamp(0.0, 255.0) + 0.5) as u8;
+    pixel[2] = (b.clamp(0.0, 255.0) + 0.5) as u8;
   }
   Ok(())
 }

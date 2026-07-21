@@ -12,6 +12,7 @@ napi-derive = "2.16.0"
 
 # [build]
 # rustflags = ["-C", "target-cpu=native"]
+# rustflags = ["-C", "target-feature=+avx2"]
 
 [build-dependencies]
 napi-build = "2.1.0"
