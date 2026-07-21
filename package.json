@@ -1,0 +1,32 @@
+{
+  "name": "fast-norm",
+  "private": true,
+  "version": "1.0.0",
+  "main": "./fast-norm.js",
+  "module": "./fast-norm.mjs",
+  "types": "./fast-norm.d.ts",
+  "exports": {
+    ".": {
+      "types": "./fast-norm.d.ts",
+      "import": "./fast-norm.mjs",
+      "require": "./fast-norm.js"
+    }
+  },
+  "napi": {
+    "binaryName": "fast-norm",
+    "targets": [
+      "x86_64-unknown-linux-gnu",
+      "x86_64-pc-windows-msvc"
+    ]
+  },
+  "scripts": {
+    "build": "napi build --platform --release",
+    "install": "node scripts/install-strategy.js"
+  },
+  "devDependencies": {
+    "@napi-rs/cli": "^3.7.1",
+    "@napi-rs/wasm-runtime": "^1.1.5",
+    "bench-node": "^0.15.0"
+  }
+}
+
