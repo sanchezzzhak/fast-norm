@@ -25,11 +25,17 @@ export const normalizeRgbaAsync = nativeBinding.normalizeRgbaAsync;
 export const normalizeBgr = nativeBinding.normalizeBgr;
 export const normalizeBgrAsync = nativeBinding.normalizeBgrAsync;
 
+export const denormalizeRgb = nativeBinding.denormalizeRgb;
+export const denormalizeRgbAsync  = nativeBinding.denormalizeRgbAsync;
+
+
 export default {
 	normalizeRgb,
 	normalizeRgbAsync,
 	normalizeRgba,
 	normalizeRgbaAsync,
 	normalizeBgr,
-	normalizeBgrAsync
+	normalizeBgrAsync,
+	denormalizeRgb,
+	denormalizeRgbAsync
 };

@@ -1,6 +1,6 @@
 {
   "name": "fast-norm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./fast-norm.js",
   "module": "./fast-norm.mjs",
   "types": "./fast-norm.d.ts",
@@ -28,4 +28,3 @@
     "bench-node": "^0.15.0"
   }
 }
-

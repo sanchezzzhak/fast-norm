@@ -62,23 +62,119 @@ The package provides both **synchronous** (blocking) and **asynchronous** (non-b
 ### Functions
 
 ```typescript
-// Synchronous (Blocks main thread)
-function normalizeRgb(rawImg: Buffer, outBuf: Float32Array, width: number, height: number, mean: Float32Array, stdVal: Float32Array, isDiv255: boolean): void;
-function normalizeRgba(rawImg: Buffer, outBuf: Float32Array, width: number, height: number, mean: Float32Array, stdVal: Float32Array, isDiv255: boolean): void;
-function normalizeBgr(rawImg: Buffer, outBuf: Float32Array, width: number, height: number, mean: Float32Array, stdVal: Float32Array, isDiv255: boolean): void;
+/**
+ * Synchronously normalizes an RGB image from an Interleaved (HWC) format to a Planar (CHW) tensor.
+ */
+export function normalizeRgb(
+    rawImg: Buffer,
+    outBuf: Float32Array,
+    width: number,
+    height: number,
+    mean: Float32Array,
+    stdVal: Float32Array,
+    isDiv255: boolean
+): void;
 
-// Asynchronous (Executes on Worker Pool)
-function normalizeRgbAsync(rawImg: Buffer, outBuf: Float32Array, width: number, height: number, mean: Float32Array, stdVal: Float32Array, isDiv255: boolean): Promise<void>;
-function normalizeRgbaAsync(rawImg: Buffer, outBuf: Float32Array, width: number, height: number, mean: Float32Array, stdVal: Float32Array, isDiv255: boolean): Promise<void>;
-function normalizeBgrAsync(rawImg: Buffer, outBuf: Float32Array, width: number, height: number, mean: Float32Array, stdVal: Float32Array, isDiv255: boolean): Promise<void>;
+/**
+ *Asynchronously normalizes an RGB image from an Interleaved (HWC) format to a Planar (CHW) tensor.
+ */
+export function normalizeRgbAsync(
+    rawImg: Buffer,
+    outBuf: Float32Array,
+    width: number,
+    height: number,
+    mean: Float32Array,
+    stdVal: Float32Array,
+    isDiv255: boolean
+): Promise<void>;
+
+/**
+ * Synchronously normalizes an RGBA image to a Planar (CHW) RGB tensor, completely ignoring the Alpha channel.
+ */
+export function normalizeRgba(
+    rawImg: Buffer,
+    outBuf: Float32Array,
+    width: number,
+    height: number,
+    mean: Float32Array,
+    stdVal: Float32Array,
+    isDiv255: boolean
+): void;
+
+/**
+ * Asynchronously normalizes an RGBA image to a Planar (CHW) RGB tensor, completely ignoring the Alpha channel.
+ */
+export function normalizeRgbaAsync(
+    rawImg: Buffer,
+    outBuf: Float32Array,
+    width: number,
+    height: number,
+    mean: Float32Array,
+    stdVal: Float32Array,
+    isDiv255: boolean
+): Promise<void>;
+
+/**
+ * Synchronously normalizes the RGB image and rearranges the channels into a Planar (CHW) BGR tensor (for example, for YOLO).
+ */
+export function normalizeBgr(
+    rawImg: Buffer,
+    outBuf: Float32Array,
+    width: number,
+    height: number,
+    mean: Float32Array,
+    stdVal: Float32Array,
+    isDiv255: boolean
+): void;
+
+/**
+ * Asynchronously normalizes an RGB image and rearranges channels into a Planar (CHW) BGR tensor (for example, for YOLO).
+ */
+export function normalizeBgrAsync(
+    rawImg: Buffer,
+    outBuf: Float32Array,
+    width: number,
+    height: number,
+    mean: Float32Array,
+    stdVal: Float32Array,
+    isDiv255: boolean
+): Promise<void>;
+
+/**
+ * Synchronously denormalizes a planar Float32 tensor (CHW) back to a packed RGB buffer (HWC).
+ */
+export function denormalizeRgb(
+    srcBuf: Float32Array,
+    dstBuf: Buffer,
+    width: number,
+    height: number,
+    mean: Float32Array,
+    stdVal: Float32Array,
+    isDiv255: boolean
+): void;
+
+/**
+ * Asynchronously denormalizes a planar Float32 tensor (CHW) back to a packed RGB buffer (HWC).
+ */
+export function denormalizeRgbAsync(
+    srcBuf: Float32Array,
+    dstBuf: Buffer,
+    width: number,
+    height: number,
+    mean: Float32Array,
+    stdVal: Float32Array,
+    isDiv255: boolean
+): Promise<void>;
+
+
 ```
 
 ### benchmark image 640x640
 ```bash
 node --allow-natives-syntax  tests/banch-norm.js
-```
-result
-```bash
+
+# result
+
 native js (3 channels)                        x 879 ops/sec (10 runs sampled) min..max=(1.12ms...1.15ms)
 rust normalizeBgr sync                        x 3,203 ops/sec (11 runs sampled) min..max=(303.97us...317.84us)
 rust normalizeBgrAsync async                  x 2,799 ops/sec (11 runs sampled) min..max=(332.33us...430.47us)
@@ -87,9 +183,16 @@ rust normalizeRgbAsync async                  x 2,856 ops/sec (11 runs sampled) 
 native js (4 channels)                        x 650 ops/sec (11 runs sampled) min..max=(1.51ms...1.57ms)
 rust normalizeRgba sync                       x 3,261 ops/sec (10 runs sampled) min..max=(302.31us...310.84us)
 rust normalizeRgbaAsync async                 x 2,821 ops/sec (11 runs sampled) min..max=(324.93us...373.45us)
-
 ```
+```bash
+node --allow-natives-syntax  tests/banch-denorm.js
 
+# result
+
+native js denormalize                         x 6.78 ops/sec (11 runs sampled) min..max=(144.39ms...149.90ms)
+rust denormalizeRgb sync                      x 26.3 ops/sec (13 runs sampled) min..max=(37.54ms...38.57ms)
+rust denormalizeRgbAsync async                x 25.99 ops/sec (14 runs sampled) min..max=(37.41ms...39.47ms)
+```
 
 #### Arguments:
 - `rawImg`: Native Node.js `Buffer` containing raw layout image pixels.

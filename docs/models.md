@@ -43,3 +43,22 @@ const createTensor = async (data) => {
 	return new ort.Tensor('float32', inputFloatData, [1, 3, WIDTH, HEIGHT]);
 }
 ```
+
+# paddleocr-v6-rec
+
+```js
+const WIDTH = 512; // the width line dynamic
+const HEIGHT = 48;
+/**
+ * 
+ * @param {Buffer} data
+ * @return {Promise<ort.Tensor>}
+ */
+const createReaderTensor = async (data) => {
+	const inputFloatData = new Float32Array(WIDTH * HEIGHT * 3);
+	const mean = new Float32Array([0.5, 0.5, 0.5]);
+	const std  = new Float32Array([0.5, 0.5, 0.5]);
+	await normalizeRgbAsync(data, inputFloatData, WIDTH, HEIGHT, mean, std, true);
+	return new ort.Tensor('float32', inputFloatData, [1, 3, WIDTH, HEIGHT]);
+}
+```

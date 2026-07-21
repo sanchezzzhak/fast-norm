@@ -2,7 +2,7 @@ const {
 	normalizeBgr, normalizeBgrAsync,
 	normalizeRgb, normalizeRgbAsync,
 	normalizeRgba, normalizeRgbaAsync
-} = require('fast-norm');
+} = require('../fast-norm');
 const { Suite } = require('bench-node');
 
 const width = 640;
