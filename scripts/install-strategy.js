@@ -5,7 +5,6 @@ const shouldCompile = process.env.FAST_NORM_COMPILE === 'true';
 if (shouldCompile) {
 	console.log('[fast-norm] Build flag detected. Compilation from source begins...');
 	try {
-		// Запускаем вашу команду сборки napi
 		execSync('npm run build', { stdio: 'inherit' });
 		console.log('[fast-norm] Assembly completed successfully!');
 	} catch (error) {
