@@ -104,6 +104,10 @@ rust normalizeRgbaAsync async                 x 2,821 ops/sec (11 runs sampled) 
 - `x86_64-unknown-linux-gnu` (Linux x64)
 - `x86_64-pc-windows-msvc` (Windows x64)
 
+## Some usage examples
+
+see view file [models.md](docs%2Fmodels.md)
+
 ## 📄 License
 
 MIT
