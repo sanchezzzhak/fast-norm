@@ -37,5 +37,14 @@
     "@napi-rs/cli": "^3.7.1",
     "@napi-rs/wasm-runtime": "^1.1.5",
     "bench-node": "^0.15.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanchezzzhak/fast-norm.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanchezzzhak/fast-norm/issues"
+  },
+  "homepage": "https://github.com/sanchezzzhak/fast-norm#readme"
 }
