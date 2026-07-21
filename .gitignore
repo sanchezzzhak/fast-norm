@@ -3,3 +3,4 @@ index.js
 target
 Cargo.lock
 .idea/
+.npmrc
