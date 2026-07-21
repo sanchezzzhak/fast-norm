@@ -1,6 +1,5 @@
 {
   "name": "fast-norm",
-  "private": true,
   "version": "1.0.0",
   "main": "./fast-norm.js",
   "module": "./fast-norm.mjs",
