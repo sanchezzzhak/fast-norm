@@ -1,5 +1,4 @@
 const { join } = require('node:path');
-const {denormalizeRgbAsync, denormalizeRgb} = require("./fast-norm");
 let nativeBinding = null;
 
 if (process.platform === 'linux' && process.arch === 'x64') {
