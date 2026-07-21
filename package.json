@@ -4,6 +4,17 @@
   "main": "./fast-norm.js",
   "module": "./fast-norm.mjs",
   "types": "./fast-norm.d.ts",
+  "keywords": [
+    "napi-rs",
+    "onnx-runtime-node",
+    "openvino-node",
+    "image-to-tensor",
+    "image-normalization",
+    "tensor-preparation",
+    "onnxruntime",
+    "planar-preprocessing",
+    "buffer-to-tensor"
+  ],
   "exports": {
     ".": {
       "types": "./fast-norm.d.ts",
