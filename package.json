@@ -13,6 +13,7 @@
     "tensor-preparation",
     "onnxruntime",
     "planar-preprocessing",
+    "yolo11-result",
     "buffer-to-tensor"
   ],
   "exports": {
