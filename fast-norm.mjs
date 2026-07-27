@@ -29,13 +29,26 @@ export const denormalizeRgb = nativeBinding.denormalizeRgb;
 export const denormalizeRgbAsync  = nativeBinding.denormalizeRgbAsync;
 
 
+export const processYolo11Seg = nativeBinding.processYolo11Seg;
+export const processYolo11SegAsync = nativeBinding.processYolo11SegAsync;
+export const processYolo11Det = nativeBinding.processYolo11Det;
+export const processYolo11DetAsync = nativeBinding.processYolo11DetAsync;
+
+
 export default {
+	// input image buffer
 	normalizeRgb,
 	normalizeRgbAsync,
 	normalizeRgba,
 	normalizeRgbaAsync,
 	normalizeBgr,
 	normalizeBgrAsync,
+	// output image buffer
 	denormalizeRgb,
-	denormalizeRgbAsync
+	denormalizeRgbAsync,
+  // output seg/box
+	processYolo11Seg,
+	processYolo11SegAsync,
+	processYolo11Det,
+	processYolo11DetAsync
 };

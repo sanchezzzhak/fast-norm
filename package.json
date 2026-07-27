@@ -31,7 +31,8 @@
   },
   "scripts": {
     "build": "napi build --platform --release",
-    "install": "node scripts/install-strategy.js"
+    "install": "node scripts/install-strategy.js",
+    "test": "node --test tests/*.test.js"
   },
   "devDependencies": {
     "@napi-rs/cli": "^3.7.1",
