@@ -6,3 +6,10 @@ tests/
 .eslintrc.cjs
 .idea/
 .npmrc
+index.d.ts
+index.js
+target
+Cargo.lock
+.idea/
+package-lock.json
+node_modules
