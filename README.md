@@ -283,6 +283,7 @@ native js (4 channels)                        x 650 ops/sec (11 runs sampled) mi
 rust normalizeRgba sync                       x 3,261 ops/sec (10 runs sampled) min..max=(302.31us...310.84us)
 rust normalizeRgbaAsync async                 x 2,821 ops/sec (11 runs sampled) min..max=(324.93us...373.45us)
 ```
+
 ```bash
 node --allow-natives-syntax  tests/banch-denorm.js
 
@@ -291,6 +292,19 @@ node --allow-natives-syntax  tests/banch-denorm.js
 native js denormalize                         x 6.84 ops/sec (11 runs sampled) min..max=(143.76ms...148.61ms)
 rust denormalizeRgb sync                      x 56.14 ops/sec (11 runs sampled) min..max=(17.51ms...18.16ms)
 rust denormalizeRgbAsync async                x 58.32 ops/sec (11 runs sampled) min..max=(16.75ms...17.65ms)
+```
+
+
+### benchmark yolo-seg preprocessor result
+```bash
+node --allow-natives-syntax  tests/banch-yolo.js
+
+# result 
+
+native js (end2end find counter)              x 1.13 ops/sec (10 runs sampled) min..max=(875.93ms...899.81ms)
+rust processYolo11Seg sync                    x 2,769,743 ops/sec (10 runs sampled) min..max=(355.84ns...370.90ns)
+rust processYolo11SegAsync async              x 190,043 ops/sec (12 runs sampled) min..max=(4.83us...6.41us)
+
 ```
 
 #### Arguments normalize/denormalize *:

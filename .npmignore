@@ -1,0 +1,8 @@
+node_modules/
+tests/
+.npmignore
+.github/
+.yamllint
+.eslintrc.cjs
+.idea/
+.npmrc
