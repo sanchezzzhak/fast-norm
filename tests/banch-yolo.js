@@ -21,13 +21,18 @@ const maskH = 224,
 	padX = 0,
 	padY = 112;
 
-const data0 = new Float32Array(JSON.parse(fs.readFileSync(path.join(__dirname , 'fixtures/data0.json'))))
-const data1 = new Float32Array(JSON.parse(fs.readFileSync(path.join(__dirname , 'fixtures/data1.json'))))
+const rawText0 = fs.readFileSync(path.join(__dirname, 'fixtures/data0.json'), 'utf8');
+const rawText1 = fs.readFileSync(path.join(__dirname, 'fixtures/data1.json'), 'utf8');
+const obj0 = JSON.parse(rawText0);
+const obj1 = JSON.parse(rawText1);
+const data0 = Float32Array.from(Object.values(obj0));
+const data1 = Float32Array.from(Object.values(obj1));
 
 const outputs = {
 	output0: { data: data0 },
 	output1: { data: data1, dims: [1, 32, maskH, maskW] }
 };
+
 function postprocessDetectionsEnd2End(output0, origWidth, origHeight, scale, padX, padY) {
 	const data = output0.data;
 	const detections = [];
@@ -181,16 +186,17 @@ function traceContour(binaryMask, w, h) {
 function runNativeJsPipeline() {
 	const detections = postprocessDetectionsEnd2End(outputs.output0, origWidth, origHeight, scale, padX, padY);
 	processMasks(detections, outputs.output1, origWidth, origHeight, scale, padX, padY);
+	return detections;
 }
 
-const dd = new Suite();
+const dd = new Suite({});
 
 dd.add('native js (end2end find counter)', () => {
 	runNativeJsPipeline();
 })
 
 dd.add('rust processYolo11Seg sync', () => {
-	processYolo11Seg(
+	const result = processYolo11Seg(
 		data0,
 		data1,
 		maskH,
@@ -206,6 +212,7 @@ dd.add('rust processYolo11Seg sync', () => {
 		MAX_DETECTIONS,
 		MAX_POLYGON_POINTS
 	);
+
 });
 
 dd.add('rust processYolo11SegAsync async', async () => {

@@ -301,10 +301,9 @@ node --allow-natives-syntax  tests/banch-yolo.js
 
 # result 
 
-native js (end2end find counter)              x 1.13 ops/sec (10 runs sampled) min..max=(875.93ms...899.81ms)
-rust processYolo11Seg sync                    x 2,769,743 ops/sec (10 runs sampled) min..max=(355.84ns...370.90ns)
-rust processYolo11SegAsync async              x 190,043 ops/sec (12 runs sampled) min..max=(4.83us...6.41us)
-
+native js (end2end find counter)              x 24.02 ops/sec (11 runs sampled) min..max=(40.93ms...41.78ms)
+rust processYolo11Seg sync                    x 325 ops/sec (11 runs sampled) min..max=(2.98ms...3.20ms)
+rust processYolo11SegAsync async              x 293 ops/sec (10 runs sampled) min..max=(3.23ms...3.46ms)
 ```
 
 #### Arguments normalize/denormalize *:
