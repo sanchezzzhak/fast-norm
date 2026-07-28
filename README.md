@@ -1,4 +1,4 @@
-# fast-norm 🚀
+# [fast-norm](https://www.npmjs.com/package/fast-norm) 🚀
 
 High-performance image normalization library for Node.js written in Rust. Blazing fast, asynchronous-friendly, and lightweight.
 
