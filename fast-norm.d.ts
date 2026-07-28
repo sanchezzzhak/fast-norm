@@ -104,7 +104,7 @@ export function denormalizeRgbAsync(
 
 
 /**
- * Result YOLO11 (end2end nms included).
+ * Result YOLO8/11 (end2end nms included).
  */
 export interface YoloSegDetection {
     classId: number;
@@ -116,14 +116,13 @@ export interface YoloSegDetection {
 }
 
 /**
- * Result detect objects YOLO11 (nms not include).
+ * Result detect objects YOLO8/11 (nms not include).
  */
 export interface YoloBoxDetection {
     classId: number;
     confidence: number;
     bboxXyxy: number[];
 }
-
 
 /**
  * Synchronously processes YOLO11 segmentation outputs, generates thinned polygons and calculates mask areas.
@@ -202,5 +201,3 @@ export function processYolo11DetAsync(
     numClasses: number,
     numAnchors: number
 ): Promise<YoloBoxDetection[]>;
-
-

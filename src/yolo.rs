@@ -300,7 +300,6 @@ pub fn process_yolo11_seg_async(
 // yolo object detections
 // ======================
 
-
 #[napi(object)]
 pub struct YoloBoxDetection {
   pub class_id: i32,
