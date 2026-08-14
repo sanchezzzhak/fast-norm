@@ -289,9 +289,9 @@ node --allow-natives-syntax  tests/banch-denorm.js
 
 # result
 
-native js denormalize                         x 6.84 ops/sec (11 runs sampled) min..max=(143.76ms...148.61ms)
-rust denormalizeRgb sync                      x 56.14 ops/sec (11 runs sampled) min..max=(17.51ms...18.16ms)
-rust denormalizeRgbAsync async                x 58.32 ops/sec (11 runs sampled) min..max=(16.75ms...17.65ms)
+native js denormalize                         x 6.86 ops/sec (11 runs sampled) min..max=(143.05ms...147.80ms)
+rust denormalizeRgb sync                      x 77.28 ops/sec (11 runs sampled) min..max=(12.67ms...13.40ms)
+rust denormalizeRgbAsync async                x 76.47 ops/sec (10 runs sampled) min..max=(12.76ms...13.36ms)
 ```
 
 
